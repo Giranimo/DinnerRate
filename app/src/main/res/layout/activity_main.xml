@@ -1,0 +1,72 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#0099cc"
+    tools:context=".MainActivity"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="103dp"
+        android:layout_gravity="right|top">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="33dp"
+            android:id="@+id/search"
+            android:layout_marginRight="40dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="33dp"
+            android:id="@+id/settings"
+            android:layout_marginLeft="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="left|top"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/gps"
+            android:layout_weight="0.17"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="20dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/friends"
+            android:layout_weight="0.17"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="25dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/top20"
+            android:layout_weight="0.17"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="25dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/myvisits"
+            android:layout_weight="0.17"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="25dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
