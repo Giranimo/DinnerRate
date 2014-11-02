@@ -2,60 +2,101 @@ package com.example.s.dinnerrate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 25-10-2014.
  */
-public class CustomAdapter extends ArrayAdapter {
-    Context context;
-    String[] restuarenter = {"DinnerRate", "Cofoco", "MadKlubben", "Tony's", "Noma", "BLa1", "Bla2", "Bla3"};
-    String[] ratingList = {"1", "2", "3", "4", "5", "6", "7", "8"};
-    public CustomAdapter(Context context, int textViewResourceId, String[] objects) {
-        super(context, textViewResourceId, objects);
-        // TODO Auto-generated constructor stub
-        this.context = context;
+public class CustomAdapter extends BaseAdapter {
+    private Activity activity;
+    private ArrayList data;
+    private static LayoutInflater inflater=null;
+    public Resources res;
+    RowObject tempValues=null;
+    int i=0;
+    public CustomAdapter(Activity a, ArrayList d,Resources resLocal) {
+
+        activity = a;
+        data=d;
+        res = resLocal;
+        inflater = ( LayoutInflater )activity.
+                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+    public int getCount() {
+
+        if(data.size()<=0)
+            return 1;
+        return data.size();
     }
 
-    /*private view holder class*/
-    private class ViewHolder {
-        ImageView imageView;
+    public Object getItem(int position) {
+        return position;
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
+    public static class ViewHolder {
+        ImageView icon;
         TextView Rating;
         TextView Name;
 
     }
-
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        String rest = restuarenter[position];
-        String rate = ratingList[position];
 
-        LayoutInflater mInflater = (LayoutInflater) context
-                .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.activity_list, null);
+        View vi = convertView;
+        ViewHolder holder;
+
+        if(convertView==null){
+            vi = inflater.inflate(R.layout.activity_list, null);
+
             holder = new ViewHolder();
-            //holder.Rating = (TextView) convertView.findViewById(R.id.Rating);
-            holder.Name = (TextView) convertView.findViewById(R.id.Name);
+            holder.Name = (TextView) vi.findViewById(R.id.Name);
+            holder.Rating=(TextView)vi.findViewById(R.id.Rating);
+            holder.icon=(ImageView)vi.findViewById(R.id.icon);
 
-            holder.imageView = (ImageView) convertView.findViewById(R.id.icon);
-            convertView.setTag(holder);
-        } else
-            holder = (ViewHolder) convertView.getTag();
+            vi.setTag( holder );
+        }
+        else
+            holder=(ViewHolder)vi.getTag();
 
-            holder.Name.setText(rest);
+        if(data.size()<=0)
+        {
+            holder.Name.setText("No Data");
 
-            //holder.Rating.setText(rate);
+        }
+        else
+        {
 
-        //holder.imageView.setImageResource(rowItem.getImageId());
+            tempValues=null;
+            tempValues = ( RowObject ) data.get( position );
 
-        return convertView;
+            holder.Name.setText( tempValues.getRestuarentName() );
+            holder.Rating.setText( tempValues.getRating() );
+            /*
+            holder.icon.setImageResource(tempValues.getImage());
+
+            */
+            //Log.d("image", Integer.toString(res.getIdentifier(tempValues.getImage(),null,null)));
+
+            holder.icon.setImageDrawable(res.getDrawable(tempValues.getImage()));
+
+
+        }
+        return vi;
     }
 
 }
+
+
 

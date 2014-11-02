@@ -8,26 +8,92 @@ import android.app.Activity;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.location.LocationProvider;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
 
 import  com.androidquery.AQuery;
 
 
-public class GpsActivity extends Activity  {
-    private AQuery aq;
+public class GpsActivity extends Fragment implements LocationListener, View.OnClickListener {
+    TextView tv;
+    LocationManager locationManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.activity_maps, container, false);
 
-        setContentView(R.layout.activity_main);
-        aq = new AQuery(this);
 
-        aq.id(R.id.search).clicked(this, "buttonClicked");
-        aq.id(R.id.settings).clicked(this, "buttonClicked");
+
+            return v;
+    }
+
+    public static GpsActivity newInstance(String text) {
+
+        GpsActivity f = new GpsActivity();
+        Bundle b = new Bundle();
+        b.putString("msg", text);
+
+        f.setArguments(b);
+
+        return f;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tv = (TextView) view.findViewById(R.id.textView);
+        tv.setText("Her Kommer Gps Coordinater");
+
+        Button button = (Button)getActivity().findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                Location location= locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                tv.append("Gps: \n Latitude: " + location.getLatitude() + "\n Logitude: " + location.getLongitude());
+            }
+        });
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

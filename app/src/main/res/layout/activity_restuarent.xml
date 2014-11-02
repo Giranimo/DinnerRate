@@ -4,4 +4,82 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Restuarent Name"
+            android:id="@+id/Name"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_marginTop="45dp"
+            android:layout_below="@+id/Name"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Comment 1"
+            android:id="@+id/textView"
+            android:layout_marginTop="76dp"
+            android:layout_below="@+id/ratingBar"
+            android:layout_alignEnd="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Comment 2"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/textView"
+            android:layout_toLeftOf="@+id/ratingBar"
+            android:layout_marginTop="38dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Comment 3"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_marginTop="54dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/smiley"
+            android:layout_below="@+id/ratingBar"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Gå til smiley ordning"
+            android:id="@+id/textView4"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_toRightOf="@+id/imageView2" />
+    </RelativeLayout>
 </LinearLayout>

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="tabsFrameLayout" type="id" />
+    <item name="tab1" type="id" />
+    <item name="tab2" type="id" />
+    <item name="tab3" type="id" />
+    <item name="tab4" type="id" />
+    <item name="divider1" type="id" />
+    <item name="divider2" type="id" />
+    <item name="divider3" type="id" />
+    <item name="indicator_layout" type="id" />
+    <item name="indicatorImg" type="id" />
+    <item name="pager" type="id" />
+    <item name="friends" type="id" />
 </resources>

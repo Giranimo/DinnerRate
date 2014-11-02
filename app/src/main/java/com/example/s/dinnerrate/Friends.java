@@ -10,25 +10,37 @@ import android.app.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import  com.androidquery.AQuery;
 
 
-public class Friends extends Activity  {
-
-    private AQuery aq;
+public class Friends extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.activity_friends, container, false);
 
-        setContentView(R.layout.activity_main);
-        aq = new AQuery(this);
+        TextView tv = (TextView) v.findViewById(R.id.tvFragSecond);
+        tv.setText("Ikke Besluttet hvad \n der skal være her");
 
-        aq.id(R.id.search).clicked(this, "buttonClicked");
-        aq.id(R.id.settings).clicked(this, "buttonClicked");
+        return v;
+    }
+
+    public static Friends newInstance(String text) {
+
+        Friends f = new Friends();
+        Bundle b = new Bundle();
+        b.putString("msg", text);
+
+        f.setArguments(b);
+
+        return f;
     }
 }
