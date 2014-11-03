@@ -183,7 +183,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             switch (pos) {
 
                 case 0:
-                    return MyVisits.newInstance("FirstFragment, Instance 1");
+                    return FrontPage.newInstance("FirstFragment, Instance 1");
                 case 1:
                     return Friends.newInstance("SecondFragment, Instance 1");
                 case 2:
@@ -193,7 +193,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     return GpsActivity.newInstance("ForthFragment, Instance 2");
 
                 default:
-                    return MyVisits.newInstance("ThirdFragment, Default");
+                    return FrontPage.newInstance("ThirdFragment, Default");
             }
         }
 
