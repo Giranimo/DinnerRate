@@ -20,9 +20,9 @@ public class RowObject {
         this.Image = Image;
     }
 
-    public void setRating(String Url)
+    public void setRating(String Rating)
     {
-        this.Rating = Url;
+        this.Rating = Rating;
     }
 
 

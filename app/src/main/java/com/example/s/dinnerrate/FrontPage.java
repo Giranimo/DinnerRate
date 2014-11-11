@@ -29,6 +29,7 @@ public class FrontPage extends Fragment {
         try {
             v = inflater.inflate(R.layout.activity_myvisits, container, false);
         } catch (InflateException e) {
+            e.printStackTrace();
         }
         return v;
     }
